@@ -20,7 +20,7 @@ test("button has correct initial color", () => {
   expect(colorButton).toHaveStyle({ backgroundColor: "midnighblue" });
 
   // expect the button text to be 'Change to red'
-  expect(colorButton.textContent).toBe("Change to Medium Violet Red");
+  expect(colorButton).toHaveTextContent("Change to Medium Violet Red");
 });
 
 test("initial conditions", () => {
@@ -41,7 +41,9 @@ test("checkbox disables button on first click and enables on second click", () =
   render(<App />);
 
   const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
-  const button = screen.getByRole("button", { name: "Change to Midnight Blue" });
+  const button = screen.getByRole("button", {
+    name: "Change to Midnight Blue",
+  });
 
   fireEvent.click(checkbox);
   expect(button).toBeDisabled();
@@ -54,11 +56,13 @@ test("checkbox turns button into the gray color", () => {
   render(<App />);
 
   const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
-  const button = screen.getByRole("button", { name: "Change to Midnight Blue" });
+  const button = screen.getByRole("button", {
+    name: "Change to Midnight Blue",
+  });
 
   fireEvent.click(checkbox);
 
-  expect(button.style.backgroundColor).toBe("gray");
+  expect(button).toHaveStyle({ backgroundColor: "gray" });
 });
 
 describe("spaces before camel-case capital letters", () => {
